@@ -4,6 +4,20 @@ import java.util.*;
 
 public class Main {
 
+    public static void printAnimals(ArrayList<AbstractAnimals> animals, CheckAnimal tester)
+	{
+
+		//for element of 'vehicles' Arraylist (which will be type AbstractVehicle...nicknamed 'v')
+		for (AbstractAnimals a : animals)
+		{
+					//If Lambda expression on line 78 is true...
+			if (tester.test(a))
+			{	//...print the name & fuel level of each vehicle (from 'v' which refers to <AbstractVehicle>)
+				System.out.println(a.getName() + ", named:  " + a.getYear() + " breathes: " + a.breathe() + " reproduces: " + a.reproduce());
+			}
+		}
+	}
+
 
     public static void main(String[] args) {
         Mammals panda = new Mammals("Panda",1869);
@@ -41,7 +55,40 @@ public class Main {
         newList.add(catfish);
         newList.add(perch);
     
-        System.out.println(newList.toString());
+        System.out.println("________");
+        System.out.println("**List all the animals alphabetically**");
+        newList.sort((v1, v2) -> v1.getName().compareToIgnoreCase(v2.getName()));
+        newList.forEach((a) -> System.out.println(a.getName()));
+
+        System.out.println("________");
+        System.out.println("**List all the animals in descending order by year named**");
+        newList.sort((v1, v2) -> v1.getYear() - v2.getYear());
+        newList.forEach((a) -> System.out.println(a.getName() + " " + a.getYear()));
+        
+
+        System.out.println("________");
+        System.out.println("**List all the animals order by how they move**");
+        newList.sort((v1, v2) -> v1.move().compareToIgnoreCase(v2.move()));
+        newList.forEach((a) -> System.out.println(a.getName() + " Moves by: " + a.move()));
+
+        System.out.println("________");
+        System.out.println("**List only those animals the breath with lungs**");
+        printAnimals(newList, a -> a.breathe() == "Lungs");
+        
+        
+        System.out.println("________");
+        System.out.println("**List alphabetically only those animals that were named in 1758**");
+        printAnimals(newList, a -> (a.getYear() == 1758));
+        
+        
+        System.out.println("________");
+        System.out.println("**List only those animals that breath with lungs and were named in 1758**");
+        printAnimals(newList, a -> (a.breathe() == "Lungs") && (a.getYear() == 1758));
+
+
+        System.out.println("________");
+        System.out.println("**List only those animals that lay eggs and breath with lungs**");
+        printAnimals(newList, a -> (a.breathe() == "Lungs") && (a.reproduce() == "Eggs"));
 
     }
 }

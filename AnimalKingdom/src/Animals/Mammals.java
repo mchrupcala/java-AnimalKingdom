@@ -5,7 +5,7 @@ public class Mammals extends AbstractAnimals {
     public Mammals(String name, int year) {
         // super(name, year);
         // super(year);
-        
+
         MaxId++;
         this.id = MaxId;
         this.name = name;
@@ -18,13 +18,23 @@ public class Mammals extends AbstractAnimals {
     }
 
     @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int getYear() {
+        return year;
+    }
+
+    @Override
     public String move() {
         return "Walk";
     }
 
     @Override
     public String breathe() {
-        return "Breathe";
+        return "Lungs";
     }
 
     @Override

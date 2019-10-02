@@ -18,6 +18,15 @@ public class Birds extends AbstractAnimals {
     public String move() {
         return "Fly";
     }
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int getYear() {
+        return year;
+    }
 
     @Override
     public String breathe() {

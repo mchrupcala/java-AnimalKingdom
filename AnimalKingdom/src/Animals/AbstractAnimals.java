@@ -13,11 +13,15 @@ public abstract class AbstractAnimals {
 
     public abstract String eatFood();
 
+    public abstract String getName();
+
     public abstract String move();
 
     public abstract String breathe();
 
     public abstract String reproduce();
+
+    public abstract int getYear();
 
 
 }
